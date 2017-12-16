@@ -1,0 +1,24 @@
+# Khan Academy Docker 
+# docker run --rm -d -t -i -p 8008:8008  -v /storage/Docker/.kalite:/var/ka-lite/.kalite --restart=always  --name=ka-lite  mrunal4/ka-lite:latest 
+# Access via "http://localhost:8008" (or "http://$(docker-machine ip):8008" if using docker-machine)
+#
+
+version: '2'
+
+services:
+
+  # Create ka-lite container
+  ka-lite:
+    image: mrunal4/ka-lite:latest
+    container_name: ka-lite
+    restart: always
+    environment:
+      - TERM=xterm
+    hostname: 'ka-lite'
+  #    domainname: 'ka-lite' # Change to the hostname you will use
+    ports:
+      - "8008:8008"             #ka-lite
+      
+    volumes:
+      # requires proper authorizations, see rights (incase of 403-forbidden error on web browser, please check /var/ka-lite/.kalite permissions)
+      - /storage/Docker/.kalite:/var/ka-lite/.kalite
