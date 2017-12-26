@@ -48,7 +48,24 @@ Created and Maintained by : Mrunal Nachankar "<mrunal4888@gmail.com>"
  3. Now time has come to start new docker container with the pulled image. We have 2 ways to do it:
     * Start container with docker run
         
-            docker run --rm -d -t -i -p 8008:8008  -v /storage/Docker/.kalite:/var/ka-lite/.kalite --restart=always  --name=ka-lite  mrunal4/ka-lite:latest 
+
+~~~docker
+            docker run -d -i -t -p 8008:8008  -v /storage/Docker/.kalite:/var/ka-lite/.kalite --restart=always  --name=ka-lite  mrunal4/ka-lite:latest 
+~~~
+
+~~~help
+        Help for arguments used in above command:
+                --rm                         Automatically remove the container when it exits
+                -d, --detach                     Run container in background and print container ID
+                -i, --interactive                Keep STDIN open even if not attached
+                -t, --tty                        Allocate a pseudo-TTY
+                -p, --publish list               Publish a container's port(s) to the host (default [])
+                -v, --volume list                Bind mount a volume (default [])
+                --restart string             Restart policy to apply when a container exits (default "no")
+                --name string                Assign a name to the container
+        Don't use --rm and --restart together.
+~~~
+
 
     * Start container with docker-compose
         

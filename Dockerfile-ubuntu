@@ -10,7 +10,7 @@ RUN echo "deb http://ppa.launchpad.net/learningequality/ka-lite/ubuntu `awk -F'[
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3194DD81
 
 # Install the ka-lite and clean apt cache
-RUN apt-get update && apt-get install -y -q ka-lite  \
+RUN apt-get update && apt-get install -y -q ka-lite net-tools  \
     && apt-get clean \
     && rm -rf /tmp/* /var/tmp/*  \
     && rm -rf /var/lib/apt/lists/*
